@@ -1,0 +1,48 @@
+document.querySelector('.add-blue').addEventListener('click', blueTeam);
+document.querySelector('.add-red').addEventListener('click', redTeam);
+
+
+
+function blueTeam() {
+    const blueChoice = document.querySelector('.blue-member').value.toLowerCase();
+
+    fetch(`https://pokeapi.co/api/v2/pokemon/${blueChoice}`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            console.log(data.name);
+
+            let img = document.createElement('img');
+
+            img.src = data.sprites.front_default;
+
+            document.querySelector('.blue').appendChild(img);
+        })
+
+        .catch(err => {
+            console.log(`error ${err}`)
+        })
+
+}
+
+
+function redTeam() {
+    const redChoice = document.querySelector('.red-member').value.toLowerCase();
+
+    fetch(`https://pokeapi.co/api/v2/pokemon/${redChoice}`)
+        .then(res => res.json())
+        .then(data => {
+            console.log(data)
+            console.log(data.name);
+
+            let img = document.createElement('img');
+
+            img.src = data.sprites.front_default;
+
+            document.querySelector('.red').appendChild(img);
+        })
+
+        .catch(err => {
+            console.log(`error ${err}`)
+        })
+}
